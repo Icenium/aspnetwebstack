@@ -37,7 +37,7 @@ namespace System.Web.Http.WebHost.Routing
         {
             get
             {
-                string absolutePath = _httpRequest.RequestUri.AbsolutePath;
+                string absolutePath = Uri.UnescapeDataString(_httpRequest.RequestUri.AbsolutePath);
                 if (absolutePath.StartsWith(_virtualPathRoot, StringComparison.OrdinalIgnoreCase))
                 {
                     string relativePath = _virtualPathRoot.Length == 1 ? absolutePath : absolutePath.Substring(_virtualPathRoot.Length);
